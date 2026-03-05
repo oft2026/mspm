@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+data/raw/
+data/processed/
+checkpoints/
+results/
+runs/
+*.pt
+*.pth
+.DS_Store
+.venv/
+.claude/

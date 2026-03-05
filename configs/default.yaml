@@ -1,0 +1,75 @@
+data:
+  rolling_window: 50
+  features:
+    - adj_close
+    - open
+    - high
+    - low
+    - volume
+  eam_train_start: "2009-01-01"
+  eam_train_end: "2015-12-31"
+  eam_predict_start: "2016-01-01"
+  eam_predict_end: "2020-12-31"
+  sam_train_start: "2016-01-01"
+  sam_train_end: "2018-12-31"
+  sam_val_start: "2019-01-01"
+  sam_val_end: "2019-12-31"
+  backtest_start: "2020-01-01"
+  backtest_end: "2020-12-31"
+
+eam:
+  # ResNet 1D backbone
+  resnet_channels: [64, 128, 256]
+  resnet_kernel_size: 3
+  num_residual_blocks: 2
+  # Dueling DQN
+  num_actions: 3
+  hidden_dim: 256
+  # Training
+  learning_rate: 0.0001
+  gamma: 0.99
+  n_step: 2
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay_steps: 50000
+  replay_buffer_size: 100000
+  batch_size: 64
+  target_update_freq: 1000
+  num_episodes: 200
+  commission: 0.0025
+  # Transfer
+  foundational_ticker: "AAPL"
+  transfer_finetune_episodes: 50
+
+sam:
+  # Network
+  conv_channels: [32, 64]
+  conv_kernel_size: [1, 3]
+  hidden_dim: 256
+  # PPO
+  learning_rate: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_epsilon: 0.2
+  entropy_coeff: 0.01
+  value_loss_coeff: 0.5
+  max_grad_norm: 0.5
+  ppo_epochs: 10
+  mini_batch_size: 64
+  rollout_length: 256
+  num_updates: 500
+  commission: 0.0025
+  risk_scaling: 0.001
+
+portfolios:
+  portfolio_a:
+    tickers: ["AAPL", "AMD", "GOOGL"]
+  portfolio_b:
+    tickers: ["GOOGL", "NVDA", "TSLA"]
+  portfolio_c:
+    tickers: ["GOOGL", "NVDA", "AMZN"]
+  portfolio_d:
+    tickers: ["NVDA", "META", "MSFT"]
+
+initial_capital: 10000.0
+seed: 42

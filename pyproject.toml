@@ -1,0 +1,28 @@
+[project]
+name = "mspm"
+version = "0.1.0"
+description = "MSPM: Modularized and Scalable Multi-Agent RL for Portfolio Management"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "oft2026"}]
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "yfinance>=0.2.18",
+    "omegaconf>=2.3",
+    "matplotlib>=3.7",
+    "gymnasium>=1.0",
+    "pyarrow>=14.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/oft2026/mspm"
+Repository = "https://github.com/oft2026/mspm"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["mspm*"]
